@@ -25,8 +25,8 @@ io.on('connection', function(socket){
       socket.leaveAll();
       socket.join(room);
       io.in(room).emit("recieve", "Server : " + username + " has entered the chat.");
-      console.log(username + ", " + room)
       socket.emit("join", room);
+      console.log(username + " in " + room)
     }
   })
 
