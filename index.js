@@ -26,12 +26,13 @@ io.on('connection', function(socket){
       socket.join(room);
       io.in(room).emit("recieve", "Server : " + username + " has entered the chat.");
       socket.emit("join", room);
-      console.log(username + " in " + room)
+      console.log(username + ", " + room)
     }
   })
 
   socket.on("send", function(message){
     io.in(rooms[socket.id]).emit("recieve", usernames[socket.id] +" : " + message);
+    console.log(username)
   })
 
   socket.on("recieve", function(message){
