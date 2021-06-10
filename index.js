@@ -32,7 +32,7 @@ io.on('connection', function(socket){
 
   socket.on("send", function(message){
     io.in(rooms[socket.id]).emit("recieve", usernames[socket.id] +" : " + message);
-    console.log(username)
+    //console.log(username)
   })
 
   socket.on("recieve", function(message){
