@@ -10,9 +10,16 @@
     <script src= "socket.io/socket.io.js"></script>
   </head>
   <body onload = "onload()">
+    <script type="application/javascript">
+    function getIP(json) {
+        ("My public IP address is: ", json.ip);
+    }
+    </script>
+
+    <script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
     <div id = "Main">
       <audio id = "Ding" src = "Ding.mp3"> </audio>
-      <h1 id = "Title"> Chat Rooms V0.5.2</h1>
+      <img src="https://fontmeme.com/permalink/210611/7a57856e8ec53e0fcf27692580597634.png" alt="3d-fonts" border="0">
       <div id = "AccessPort">
         <label id = "NameLabel"> Username  </label>
         <input id = "NameInput" type = "text">
@@ -35,7 +42,8 @@
         <p id = "Message9" class = "Message"> - </p>
         <label id = "MessageLabel"> Message </label>
         <input id = "ComposedMessage" type = "text">
-        <input id = "SendMessage" onclick="Send()" value = "Send" class = "Button" type = "submit">
+        <br>
+        <input type="image" src="https://fontmeme.com/permalink/210611/5aa1e0fb8759a0ffbea8537da5a1744a.png" alt="futuristic-fonts" border="0" id = "SendMessage" onclick="Send()" value = "Send" class = "Button">
       </div>
       <br><br>
     </div>

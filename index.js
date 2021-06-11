@@ -2,11 +2,15 @@ const http = require("http");
 const express = require("express");
 const socketio = require("socket.io");
 const path = require("path");
+var userip = ""
+function getIP(json) {
+  console.log("My public IP address is: ", json.ip);
+}
 
 const app = express();
 const httpserver = http.Server(app);
 const io = socketio(httpserver);
-
+var ip = ""
 const gamedirectory = path.join(__dirname, "html");
 
 app.use(express.static(gamedirectory));
@@ -18,7 +22,10 @@ var usernames = [];
 
 io.on('connection', function(socket){
 
-  socket.on("join", function(room, username){
+  socket.on("join", function(room, username, userip){
+    function getIP(json) {
+          ip = json.ip;
+      }
     if (username != ""){
       rooms[socket.id] = room;
       usernames[socket.id] = username;
@@ -26,7 +33,7 @@ io.on('connection', function(socket){
       socket.join(room);
       io.in(room).emit("recieve", "Server : " + username + " has entered the chat.");
       socket.emit("join", room);
-      console.log(username + ", " + room)
+      console.log(username + ", " + room + ", " + userip)
     }
   })
 
@@ -39,3 +46,4 @@ io.on('connection', function(socket){
     socket.emit("recieve", message);
   })
 })
+o
